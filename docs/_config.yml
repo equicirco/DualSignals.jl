@@ -1,0 +1,10 @@
+# _config.yml
+title: DualSignals.jl
+description: Documentation
+url: "https://equicirco.github.io"
+baseurl: "/DualSognals.jl"  
+
+remote_theme: just-the-docs/just-the-docs@v0.10.1
+
+plugins:
+  - jekyll-remote-theme
