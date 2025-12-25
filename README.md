@@ -1,0 +1,24 @@
+# <img src="docs/assets/logo.png" alt="DualSignals.jl logo" width="48" style="vertical-align: middle;"> DualSignals.jl
+
+DualSignals.jl standardizes extraction and decision-support reporting of dual variables (shadow prices / Lagrange multipliers) and constraint tightness from solved optimization and equilibrium models. It is designed to work across networked infrastructures and general equilibrium applications by using a simple, portable data model: **components ⇄ constraints ⇄ duals**.
+
+## Approach
+1. Export model results into the DualSignals data model (constraints, duals, activity/slack, units, component mapping).
+2. Run generic analyses (bindingness, bottleneck rankings, marginal values of relaxations).
+3. Produce decision-support outputs (tables and concise narratives) suitable for non-expert audiences.
+
+## Documentation
+Documentation is available here: https://equicirco.github.io/DualSignals.jl
+
+## Citation
+If you use DualSignals.jl, please cite it as:
+
+> **(citation placeholder)**
+
+A `CITATION.cff` file is provided in this repository.
+
+## License
+MIT License. See `LICENSE`.
+
+## Author
+Riccardo Boero (NILU)
