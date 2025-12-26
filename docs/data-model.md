@@ -8,7 +8,7 @@ nav_order: 2
 This repository defines a small, model-agnostic data model for exporting and exchanging **dual-based signals** from solved models (network optimization, IO-LP, equilibrium/CGE-as-optimization, etc.). The same model is maintained in:
 
 - **LinkML** (`spec/linkml/dualsignals.yaml`) as the canonical specification
-- **JSON Schema** (`spec/jsonschema/dualsignals.schema.json`) generated from LinkML for validation and exchange
+- **JSON Schema** (`spec/schema/dualsignals.schema.json`) generated from LinkML for validation and exchange
 
 ## Concept
 The core idea is to standardize results around three primitives:
@@ -27,6 +27,7 @@ This is sufficient to compute generic decision-support outputs such as:
 
 All exchanges use a single JSON object of class `DualSignalsDataset` with keys:
 
+- `dataset_id` (required)
 - `metadata` (required)
 - `components` (required, list)
 - `constraints` (required, list)
@@ -39,7 +40,6 @@ All exchanges use a single JSON object of class `DualSignalsDataset` with keys:
 Describes the dataset and optional objective context.
 
 Fields:
-- `dataset_id` (required): identifier for the dataset
 - `description` (optional): free text
 - `created_at` (optional): timestamp
 - `objective_sense` (optional): `minimize` or `maximize`
@@ -77,7 +77,7 @@ Notes:
 Stores solved quantities attached to a constraint (the “signals”).
 
 Fields:
-- `constraint_id` (required): references `Constraint.constraint_id`
+- `constraint_id` (required): reference to `Constraint` (by ID)
 - `dual` (required): the dual variable / shadow price / Lagrange multiplier
 - `activity` (optional): realized LHS value at the solution
 - `slack` (optional): slack for inequalities (0 if binding)
@@ -108,6 +108,5 @@ python -m pip install -U linkml linkml-runtime
 linkml-generate jsonschema \
   --no-metadata \
   -s spec/linkml/dualsignals.yaml \
-  > spec/jsonschema/dualsignals.schema.json
+  > spec/schema/dualsignals.schema.json
 ```
-

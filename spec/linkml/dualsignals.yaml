@@ -13,6 +13,9 @@ classes:
   DualSignalsDataset:
     tree_root: true
     attributes:
+      dataset_id:
+        identifier: true
+        required: true
       metadata:
         range: DatasetMetadata
         required: true
@@ -34,9 +37,6 @@ classes:
 
   DatasetMetadata:
     attributes:
-      dataset_id:
-        identifier: true
-        required: true
       description:
       created_at:
         range: datetime
@@ -83,10 +83,13 @@ classes:
         range: string
         multivalued: true
         required: true
+        min_count: 1
 
   ConstraintSolution:
     attributes:
       constraint_id:
+        range: Constraint
+        inlined: false
         required: true
       dual:
         range: double
