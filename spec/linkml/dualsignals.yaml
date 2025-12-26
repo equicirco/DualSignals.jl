@@ -83,7 +83,7 @@ classes:
         range: string
         multivalued: true
         required: true
-        min_count: 1
+        minimum_cardinality: 1
 
   ConstraintSolution:
     attributes:
