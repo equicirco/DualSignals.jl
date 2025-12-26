@@ -14,7 +14,7 @@ uuid = "ade2ca70-3891-5945-98fb-dc099432e06a"
 version = "1.11.0"
 
 [[deps.DualSignals]]
-deps = ["Dates", "JSON3", "StructTypes"]
+deps = ["Dates", "JSON3", "StructTypes", "Test"]
 path = "."
 uuid = "e4247b8d-50b5-41ef-b53d-f6e21a6bdac0"
 version = "0.1.0"
