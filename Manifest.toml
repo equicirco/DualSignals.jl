@@ -2,7 +2,7 @@
 
 julia_version = "1.12.3"
 manifest_format = "2.0"
-project_hash = "9ad4d0a0b9eb83f745d7a954e030758abadc1b69"
+project_hash = "5a6956918a2cd8da47975fc2ea985cb673bad066"
 
 [[deps.Dates]]
 deps = ["Printf"]
@@ -10,7 +10,7 @@ uuid = "ade2ca70-3891-5945-98fb-dc099432e06a"
 version = "1.11.0"
 
 [[deps.DualSignals]]
-deps = ["JSON3", "StructTypes"]
+deps = ["JSON3", "Parsers", "StructTypes"]
 path = "."
 uuid = "e4247b8d-50b5-41ef-b53d-f6e21a6bdac0"
 version = "0.1.0"
