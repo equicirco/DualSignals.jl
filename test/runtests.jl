@@ -1,25 +1,26 @@
 using Test
 using DualSignals
 using JSON3
+using Dates
 
 function build_valid_dataset()
     metadata = DatasetMetadata(description="demo dataset")
     components = [
-        Component(component_id="n1", component_type=ComponentType.node, name="Node 1"),
-        Component(component_id="l1", component_type=ComponentType.link, name="Link 1"),
+        Component(component_id="n1", component_type=DualSignals.node, name="Node 1"),
+        Component(component_id="l1", component_type=DualSignals.link, name="Link 1"),
     ]
     constraints = [
         Constraint(
             constraint_id="c1",
-            kind=ConstraintKind.balance,
-            sense=ConstraintSense.eq,
+            kind=DualSignals.balance,
+            sense=DualSignals.eq,
             rhs=0.0,
             component_ids=["n1"],
         ),
         Constraint(
             constraint_id="c2",
-            kind=ConstraintKind.capacity,
-            sense=ConstraintSense.le,
+            kind=DualSignals.capacity,
+            sense=DualSignals.le,
             rhs=100.0,
             component_ids=["l1"],
         ),
@@ -74,8 +75,8 @@ end
     @test any(contains.(errors, "dataset_id"))
 
     dup_components = [
-        Component(component_id="n1", component_type=ComponentType.node),
-        Component(component_id="n1", component_type=ComponentType.node),
+        Component(component_id="n1", component_type=DualSignals.node),
+        Component(component_id="n1", component_type=DualSignals.node),
     ]
     dup_dataset = DualSignalsDataset(
         dataset_id="demo",
@@ -90,15 +91,15 @@ end
 
     bad_constraint = Constraint(
         constraint_id="c_bad",
-        kind=ConstraintKind.capacity,
-        sense=ConstraintSense.le,
+        kind=DualSignals.capacity,
+        sense=DualSignals.le,
         rhs=10.0,
         component_ids=String[],
     )
     bad_dataset = DualSignalsDataset(
         dataset_id="demo",
         metadata=DatasetMetadata(),
-        components=[Component(component_id="n1", component_type=ComponentType.node)],
+        components=[Component(component_id="n1", component_type=DualSignals.node)],
         constraints=[bad_constraint],
         constraint_solutions=ConstraintSolution[],
         variables=nothing,
@@ -109,12 +110,12 @@ end
     missing_component_dataset = DualSignalsDataset(
         dataset_id="demo",
         metadata=DatasetMetadata(),
-        components=[Component(component_id="n1", component_type=ComponentType.node)],
+        components=[Component(component_id="n1", component_type=DualSignals.node)],
         constraints=[
             Constraint(
                 constraint_id="c1",
-                kind=ConstraintKind.balance,
-                sense=ConstraintSense.eq,
+                kind=DualSignals.balance,
+                sense=DualSignals.eq,
                 rhs=0.0,
                 component_ids=["n2"],
             ),
@@ -128,7 +129,7 @@ end
     missing_constraint_dataset = DualSignalsDataset(
         dataset_id="demo",
         metadata=DatasetMetadata(),
-        components=[Component(component_id="n1", component_type=ComponentType.node)],
+        components=[Component(component_id="n1", component_type=DualSignals.node)],
         constraints=Constraint[],
         constraint_solutions=[ConstraintSolution(constraint_id="c1", dual=1.0)],
         variables=nothing,
@@ -139,7 +140,7 @@ end
     missing_variable_component_dataset = DualSignalsDataset(
         dataset_id="demo",
         metadata=DatasetMetadata(),
-        components=[Component(component_id="n1", component_type=ComponentType.node)],
+        components=[Component(component_id="n1", component_type=DualSignals.node)],
         constraints=Constraint[],
         constraint_solutions=ConstraintSolution[],
         variables=[VariableValue(component_id="n2", name="flow", value=1.0)],
@@ -172,7 +173,7 @@ end
     """
     parsed = JSON3.read(json, DualSignalsDataset)
     @test parsed.metadata.created_at isa DateTime
-    @test parsed.components[1].component_type == ComponentType.node
+    @test parsed.components[1].component_type == DualSignals.node
 
     bad_json = """
     {

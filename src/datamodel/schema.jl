@@ -13,15 +13,8 @@ StructTypes.StructType(::Type{ConstraintSense}) = StructTypes.StringType()
 
 StructTypes.StructType(::Type{DateTime}) = StructTypes.StringType()
 
-function StructTypes.construct(::Type{DateTime}, x)
-    if x isa DateTime
-        return x
-    end
-    if x isa AbstractString
-        return DateTime(x)
-    end
-    error("Invalid DateTime value: $(repr(x))")
-end
+StructTypes.construct(::Type{DateTime}, x::DateTime) = x
+StructTypes.construct(::Type{DateTime}, x::String) = DateTime(x)
 
 StructTypes.lower(x::DateTime) = Dates.format(x, dateformat"yyyy-mm-ddTHH:MM:SS")
 
@@ -39,21 +32,25 @@ function _enum_from_string(::Type{T}, x) where {T}
     error("Invalid $(T) value: $(repr(x))")
 end
 
-function StructTypes.construct(::Type{ObjectiveSense}, x)
-    return _enum_from_string(ObjectiveSense, x)
-end
+StructTypes.construct(::Type{ObjectiveSense}, x::AbstractString) =
+    _enum_from_string(ObjectiveSense, x)
+StructTypes.construct(::Type{ObjectiveSense}, x::Symbol) =
+    _enum_from_string(ObjectiveSense, String(x))
 
-function StructTypes.construct(::Type{ComponentType}, x)
-    return _enum_from_string(ComponentType, x)
-end
+StructTypes.construct(::Type{ComponentType}, x::AbstractString) =
+    _enum_from_string(ComponentType, x)
+StructTypes.construct(::Type{ComponentType}, x::Symbol) =
+    _enum_from_string(ComponentType, String(x))
 
-function StructTypes.construct(::Type{ConstraintKind}, x)
-    return _enum_from_string(ConstraintKind, x)
-end
+StructTypes.construct(::Type{ConstraintKind}, x::AbstractString) =
+    _enum_from_string(ConstraintKind, x)
+StructTypes.construct(::Type{ConstraintKind}, x::Symbol) =
+    _enum_from_string(ConstraintKind, String(x))
 
-function StructTypes.construct(::Type{ConstraintSense}, x)
-    return _enum_from_string(ConstraintSense, x)
-end
+StructTypes.construct(::Type{ConstraintSense}, x::AbstractString) =
+    _enum_from_string(ConstraintSense, x)
+StructTypes.construct(::Type{ConstraintSense}, x::Symbol) =
+    _enum_from_string(ConstraintSense, String(x))
 
 StructTypes.lower(x::ObjectiveSense) = string(x)
 StructTypes.lower(x::ComponentType) = string(x)
