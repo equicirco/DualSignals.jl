@@ -1,0 +1,370 @@
+{
+    "$defs": {
+        "Component": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "component_id": {
+                    "type": "string"
+                },
+                "component_type": {
+                    "$ref": "#/$defs/ComponentType"
+                },
+                "name": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "parent_id": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "tags": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "unit": {
+                    "description": "Unit for primary quantities of this component (if applicable).",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "component_id",
+                "component_type"
+            ],
+            "title": "Component",
+            "type": "object"
+        },
+        "ComponentType": {
+            "description": "",
+            "enum": [
+                "node",
+                "link",
+                "source",
+                "sink",
+                "sector",
+                "product",
+                "agent",
+                "other"
+            ],
+            "title": "ComponentType",
+            "type": "string"
+        },
+        "Constraint": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "component_ids": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "minItems": 1,
+                    "type": "array"
+                },
+                "constraint_id": {
+                    "type": "string"
+                },
+                "kind": {
+                    "$ref": "#/$defs/ConstraintKind"
+                },
+                "rhs": {
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "sense": {
+                    "$ref": "#/$defs/ConstraintSense"
+                },
+                "unit": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "constraint_id",
+                "kind",
+                "sense",
+                "component_ids"
+            ],
+            "title": "Constraint",
+            "type": "object"
+        },
+        "ConstraintKind": {
+            "description": "",
+            "enum": [
+                "balance",
+                "capacity",
+                "resource",
+                "policy_cap",
+                "technology",
+                "other"
+            ],
+            "title": "ConstraintKind",
+            "type": "string"
+        },
+        "ConstraintSense": {
+            "description": "",
+            "enum": [
+                "le",
+                "eq",
+                "ge"
+            ],
+            "title": "ConstraintSense",
+            "type": "string"
+        },
+        "ConstraintSolution": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "activity": {
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "constraint_id": {
+                    "type": "string"
+                },
+                "dual": {
+                    "type": "number"
+                },
+                "is_binding": {
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "scenario": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "slack": {
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "time": {
+                    "description": "ISO-8601 timestamp or period label.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "constraint_id",
+                "dual"
+            ],
+            "title": "ConstraintSolution",
+            "type": "object"
+        },
+        "DatasetMetadata": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "created_at": {
+                    "format": "date-time",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "description": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "notes": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "objective_sense": {
+                    "$ref": "#/$defs/ObjectiveSense"
+                },
+                "objective_value": {
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "units_convention": {
+                    "description": "Free-text note on currency/base units (e.g., EUR, MWh, tCO2).",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "title": "DatasetMetadata",
+            "type": "object"
+        },
+        "DualSignalsDataset": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "components": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "constraint_solutions": {
+                    "items": {
+                        "$ref": "#/$defs/ConstraintSolution"
+                    },
+                    "type": "array"
+                },
+                "constraints": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "dataset_id": {
+                    "type": "string"
+                },
+                "metadata": {
+                    "$ref": "#/$defs/DatasetMetadata"
+                },
+                "variables": {
+                    "items": {
+                        "$ref": "#/$defs/VariableValue"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "dataset_id",
+                "metadata",
+                "components",
+                "constraints",
+                "constraint_solutions"
+            ],
+            "title": "DualSignalsDataset",
+            "type": "object"
+        },
+        "ObjectiveSense": {
+            "description": "",
+            "enum": [
+                "minimize",
+                "maximize"
+            ],
+            "title": "ObjectiveSense",
+            "type": "string"
+        },
+        "VariableValue": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "component_id": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "scenario": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "time": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "unit": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "value": {
+                    "type": "number"
+                }
+            },
+            "required": [
+                "component_id",
+                "name",
+                "value"
+            ],
+            "title": "VariableValue",
+            "type": "object"
+        }
+    },
+    "$id": "https://example.org/dualsignals",
+    "$schema": "https://json-schema.org/draft/2019-09/schema",
+    "additionalProperties": true,
+    "description": "",
+    "metamodel_version": "1.7.0",
+    "properties": {
+        "components": {
+            "items": {
+                "type": "string"
+            },
+            "type": "array"
+        },
+        "constraint_solutions": {
+            "items": {
+                "$ref": "#/$defs/ConstraintSolution"
+            },
+            "type": "array"
+        },
+        "constraints": {
+            "items": {
+                "type": "string"
+            },
+            "type": "array"
+        },
+        "dataset_id": {
+            "type": "string"
+        },
+        "metadata": {
+            "$ref": "#/$defs/DatasetMetadata"
+        },
+        "variables": {
+            "items": {
+                "$ref": "#/$defs/VariableValue"
+            },
+            "type": [
+                "array",
+                "null"
+            ]
+        }
+    },
+    "required": [
+        "dataset_id",
+        "metadata",
+        "components",
+        "constraints",
+        "constraint_solutions"
+    ],
+    "title": "dualsignals",
+    "type": "object",
+    "version": null
+}
+
