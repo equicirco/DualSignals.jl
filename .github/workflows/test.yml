@@ -16,9 +16,6 @@ jobs:
         with:
           version: "1.9"
 
-      - name: Resolve dependencies
-        run: julia --project -e 'using Pkg; Pkg.resolve()'
-
       - name: Install dependencies
         run: julia --project -e 'using Pkg; Pkg.instantiate()'
 
