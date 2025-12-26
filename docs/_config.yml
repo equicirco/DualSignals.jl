@@ -2,7 +2,7 @@
 title: DualSignals.jl
 description: Documentation
 url: "https://equicirco.github.io"
-baseurl: "/DualSognals.jl"  
+baseurl: "/DualSignals.jl"  
 
 remote_theme: just-the-docs/just-the-docs@v0.10.1
 
