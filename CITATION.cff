@@ -1,5 +1,5 @@
 cff-version: 1.2.0
-title: DualSignals.jl - Julia package to interpret and report dual-based signals from solved infrastructure or equilibrium models. 
+title: DualSignals.jl - Julia package for standardized extraction and decision-support reporting of shadow prices (duals) and constraint tightness from network and equilibrium models.
 message: >-
   v0.0.1 - First full draft.
 type: software
