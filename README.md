@@ -1,4 +1,6 @@
-# <img src="docs/assets/logo.png" alt="DualSignals.jl logo" width="48" style="vertical-align: middle;"> DualSignals.jl
+<img src="docs/assets/logo.png" alt="DualSignals.jl logo" width="120" style="vertical-align: middle;"> 
+
+# DualSignals.jl
 Julia package to interpret and report dual-based signals from solved infrastructure or equilibrium models.
 
 DualSignals.jl standardizes extraction and decision-support reporting of dual variables (shadow prices / Lagrange multipliers) and constraint tightness from solved optimization and equilibrium models. It is designed to work across networked infrastructures and general equilibrium applications by using a simple, portable data model: **components ⇄ constraints ⇄ duals**.
@@ -23,3 +25,4 @@ MIT License. See `LICENSE`.
 
 ## Author
 Riccardo Boero (NILU)
+
