@@ -1,0 +1,151 @@
+id: https://example.org/dualsignals
+name: dualsignals
+prefixes:
+  linkml: https://w3id.org/linkml/
+  dualsignals: https://example.org/dualsignals/
+default_prefix: dualsignals
+default_range: string
+
+imports:
+  - linkml:types
+
+classes:
+  DualSignalsDataset:
+    tree_root: true
+    attributes:
+      metadata:
+        range: DatasetMetadata
+        required: true
+      components:
+        range: Component
+        multivalued: true
+        required: true
+      constraints:
+        range: Constraint
+        multivalued: true
+        required: true
+      constraint_solutions:
+        range: ConstraintSolution
+        multivalued: true
+        required: true
+      variables:
+        range: VariableValue
+        multivalued: true
+
+  DatasetMetadata:
+    attributes:
+      dataset_id:
+        identifier: true
+        required: true
+      description:
+      created_at:
+        range: datetime
+      objective_sense:
+        range: ObjectiveSense
+      objective_value:
+        range: double
+      units_convention:
+        description: Free-text note on currency/base units (e.g., EUR, MWh, tCO2).
+      notes:
+
+  Component:
+    attributes:
+      component_id:
+        identifier: true
+        required: true
+      component_type:
+        range: ComponentType
+        required: true
+      name:
+      parent_id:
+        range: string
+      unit:
+        description: Unit for primary quantities of this component (if applicable).
+      tags:
+        range: string
+        multivalued: true
+
+  Constraint:
+    attributes:
+      constraint_id:
+        identifier: true
+        required: true
+      kind:
+        range: ConstraintKind
+        required: true
+      sense:
+        range: ConstraintSense
+        required: true
+      rhs:
+        range: double
+      unit:
+      component_ids:
+        range: string
+        multivalued: true
+        required: true
+
+  ConstraintSolution:
+    attributes:
+      constraint_id:
+        required: true
+      dual:
+        range: double
+        required: true
+      activity:
+        range: double
+      slack:
+        range: double
+      is_binding:
+        range: boolean
+      time:
+        range: string
+        description: ISO-8601 timestamp or period label.
+      scenario:
+        range: string
+
+  VariableValue:
+    attributes:
+      component_id:
+        required: true
+      name:
+        required: true
+      value:
+        range: double
+        required: true
+      unit:
+      time:
+        range: string
+      scenario:
+        range: string
+
+enums:
+  ObjectiveSense:
+    permissible_values:
+      minimize: {}
+      maximize: {}
+
+  ComponentType:
+    permissible_values:
+      node: {}
+      link: {}
+      source: {}
+      sink: {}
+      sector: {}
+      product: {}
+      agent: {}
+      other: {}
+
+  ConstraintKind:
+    permissible_values:
+      balance: {}
+      capacity: {}
+      resource: {}
+      policy_cap: {}
+      technology: {}
+      other: {}
+
+  ConstraintSense:
+    permissible_values:
+      le: {}
+      eq: {}
+      ge: {}
