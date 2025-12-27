@@ -7,6 +7,23 @@ nav_order: 1
 # DualSignals.jl
 Julia package for standardized extraction and decision-support reporting of shadow prices (duals) and constraint tightness from network and equilibrium models.
 
+## Project info
+
+- Source code: https://github.com/equicirco/DualSignals.jl
+- License: https://github.com/equicirco/DualSignals.jl/blob/main/LICENSE
+- Author: Riccardo Boero
+- Citation (DOI): https://doi.org/10.5281/zenodo.18071806
+
+```bibtex
+@software{Boero_DualSignals_jl,
+  author = {Boero, Riccardo},
+  title = {DualSignals.jl - Julia package for standardized extraction and decision-support reporting of shadow prices (duals) and constraint tightness from network and equilibrium models},
+  doi = {10.5281/zenodo.18071806},
+  url = {https://equicirco.github.io/DualSignals.jl/},
+  year = {2025}
+}
+```
+
 ## What this package does
 
 DualSignals.jl helps you turn solved optimization and equilibrium models into
