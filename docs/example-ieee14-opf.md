@@ -1,6 +1,6 @@
 ---
 title: "Example: OPF"
-nav_order: 10
+nav_order: 8
 ---
 
 # IEEE 14-bus OPF example
