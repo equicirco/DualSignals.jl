@@ -1,9 +1,9 @@
 ---
-title: Example: CGE
+title: "Example: CGE"
 nav_order: 11
 ---
 
-# STDCGE example (standard CGE model)
+# Standard CGE Model
 
 This example is based on the "A Standard CGE Model in Ch. 6 (STDCGE, SEQ=276)"
 case described in `stdcge.gms` from the `gams-cge` repository. It represents a
