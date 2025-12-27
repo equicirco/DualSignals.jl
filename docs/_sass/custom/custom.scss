@@ -4,16 +4,8 @@
 	gap: 0.5rem;
 }
 
-.site-header {
-	display: flex;
-	justify-content: flex-start !important;
-	text-align: left;
-}
-
-.site-header .site-title {
-	margin-left: 0 !important;
-	margin-right: auto !important;
-	order: -1;
+.side-bar .site-title {
+	padding-right: 0.75rem;
 }
 
 .site-title .site-logo {
