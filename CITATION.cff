@@ -17,7 +17,7 @@ identifiers:
 repository-code: 'https://github.com/equicirco/DualSignals.jl'
 url: 'https://equicirco.github.io/DualSignals.jl/'
 abstract: >-
-	DualSignals.jl standardizes extraction and decision-support reporting of dual variables (shadow prices / Lagrange multipliers) and constraint tightness from solved optimization and equilibrium models. It is designed to work across networked infrastructures and general equilibrium applications by using a simple, portable data model: components ⇄ constraints ⇄ duals.
+  DualSignals.jl standardizes extraction and decision-support reporting of dual variables (shadow prices / Lagrange multipliers) and constraint tightness from solved optimization and equilibrium models. It is designed to work across networked infrastructures and general equilibrium applications by using a simple, portable data model: components ⇄ constraints ⇄ duals.
 keywords:
   - Decision Support
   - Dual Variable
