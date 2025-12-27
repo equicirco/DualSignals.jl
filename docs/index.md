@@ -7,3 +7,23 @@ nav_order: 1
 # DualSignals.jl
 Julia package for standardized extraction and decision-support reporting of shadow prices (duals) and constraint tightness from network and equilibrium models.
 
+## What this package does
+
+DualSignals.jl helps you turn solved optimization and equilibrium models into
+decision-ready insights. It provides:
+
+- A compact data model for duals, constraints, and components.
+- IO utilities to read/write JSON and tabular exports.
+- Validation utilities to check consistency of exported results.
+- Analysis helpers for ranking bottlenecks and capacity priorities.
+- Reporting utilities that summarize results for non-experts.
+
+## Documentation map
+
+- Data model specification: [Data Model](data-model.md)
+- Read/write and validation utilities: [Data IO](io.md)
+- Analysis helpers: [Analysis](analysis.md)
+- Reporting utilities: [Reporting](reporting.md)
+- JuMP adapter: [JuMP Adapter](jump.md)
+- Notebook walkthroughs: [Notebooks](notebooks.md)
+- Examples: [IEEE-14 OPF](example-ieee14-opf.md) and [CGE](stdcge.md)

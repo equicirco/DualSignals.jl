@@ -1,6 +1,6 @@
 ---
-title: IEEE 14-Bus OPF Example
-nav_order: 4
+title: Example: IEEE-14
+nav_order: 10
 ---
 
 # IEEE 14-bus OPF example
@@ -46,12 +46,53 @@ Components were created for each bus, generator, and line using the counts in
 the HDF5 arrays (14 buses, 5 generators, 20 lines). This yields a dual-only
 dataset suitable for constraint ranking and bindingness analysis.
 
-## Representing the solution in the DualSignals data model
+## Computed results (DualSignals.jl)
 
-TODO: map buses/lines/generators to `Component` entries and OPF constraints to
-`Constraint` and `ConstraintSolution` entries.
+Summary:
+- components: 39
+- constraints: 273
+- constraint solutions: 273
 
-## Running DualSignals.jl on the example
+Because this dataset does not include binding flags or slack values, the tables
+below show the top constraints by `|dual|` without filtering to binding-only.
 
-TODO: add a Julia snippet that loads the JSON, validates it, and runs the
-analysis utilities (bindingness and rankings).
+### Top constraints by |dual|
+
+| constraint_id | kind     | sense | dual        | impact                            |
+| ------------- | -------- | ----- | ----------- | --------------------------------- |
+| vm_8          | capacity | le    | -15499.9863 | impact depends on objective sense |
+| kcl_q_1       | balance  | eq    | 6112.8657   | impact depends on objective sense |
+| qg_1          | capacity | le    | -6112.8657  | impact depends on objective sense |
+| ohm_qf_1      | other    | eq    | -6112.8657  | impact depends on objective sense |
+| ohm_qf_2      | other    | eq    | -6112.8657  | impact depends on objective sense |
+
+### Top capacity constraints by |dual|
+
+| constraint_id | kind     | sense | dual        | impact                            |
+| ------------- | -------- | ----- | ----------- | --------------------------------- |
+| vm_8          | capacity | le    | -15499.9863 | impact depends on objective sense |
+| qg_1          | capacity | le    | -6112.8657  | impact depends on objective sense |
+| qg_2          | capacity | le    | -5987.9224  | impact depends on objective sense |
+| qg_3          | capacity | le    | -5639.9927  | impact depends on objective sense |
+| qg_4          | capacity | le    | -5119.9336  | impact depends on objective sense |
+
+### Plot: top |dual| constraints
+
+```text
+vm_8                   | ############################ 15499.9863
+kcl_q_1                | ########### 6112.8657
+qg_1                   | ########### 6112.8657
+ohm_qf_1               | ########### 6112.8657
+ohm_qf_2               | ########### 6112.8657
+```
+
+## Reproducing the tables and plot
+
+```julia
+using DualSignals
+
+dataset = read_json("examples/case14_IEEE/dualsignals_dual_sample_1.json")
+top = rank_constraints(dataset; top=5, binding_only=false, metric=:abs_dual)
+top_capacity = rank_constraints(dataset; top=5, binding_only=false, metric=:abs_dual,
+    kind=DualSignals.capacity)
+```

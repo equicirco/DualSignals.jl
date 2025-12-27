@@ -1,6 +1,6 @@
 ---
-title: STDCGE Example
-nav_order: 5
+title: Example: CGE
+nav_order: 11
 ---
 
 # STDCGE example (standard CGE model)
@@ -43,3 +43,48 @@ The DualSignals-formatted output for this example is stored at:
 
 This yields a compact, dual-centric dataset suitable for constraint ranking and
 bindingness analysis in DualSignals.jl.
+
+## Computed results (DualSignals.jl)
+
+Summary:
+- components: 13
+- constraints: 47
+- constraint solutions: 47
+
+Because this dataset does not include binding flags or slack values, the tables
+below show the top constraints by `|dual|` without filtering to binding-only.
+
+### Top constraints by |dual|
+
+| constraint_id | kind  | sense | dual    | impact                            |
+| ------------- | ----- | ----- | ------- | --------------------------------- |
+| eqpm_BRD      | other | eq    | 1.6865  | impact depends on objective sense |
+| eqpzs_BRD     | other | eq    | 1.5421  | impact depends on objective sense |
+| eqpzs_MLK     | other | eq    | -1.5090 | impact depends on objective sense |
+| eqpm_MLK      | other | eq    | 1.0466  | impact depends on objective sense |
+| obj           | other | eq    | 1.0000  | impact depends on objective sense |
+
+### Top capacity constraints by |dual|
+
+No capacity constraints are present in this dataset.
+
+### Plot: top |dual| constraints
+
+```text
+eqpm_BRD               | ############################ 1.6865
+eqpzs_BRD              | ########################## 1.5421
+eqpzs_MLK              | ######################### 1.5090
+eqpm_MLK               | ################# 1.0466
+obj                    | ################# 1.0000
+```
+
+## Reproducing the tables and plot
+
+```julia
+using DualSignals
+
+dataset = read_json("examples/stdcge/dualsignals_stdcge.json")
+top = rank_constraints(dataset; top=5, binding_only=false, metric=:abs_dual)
+top_capacity = rank_constraints(dataset; top=5, binding_only=false, metric=:abs_dual,
+    kind=DualSignals.capacity)
+```
