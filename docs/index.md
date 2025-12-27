@@ -9,10 +9,10 @@ Julia package for standardized extraction and decision-support reporting of shad
 
 ## Project info
 
-- Source code: https://github.com/equicirco/DualSignals.jl
-- License: https://github.com/equicirco/DualSignals.jl/blob/main/LICENSE
+- Source code: [https://github.com/equicirco/DualSignals.jl](https://github.com/equicirco/DualSignals.jl)
+- License: [https://github.com/equicirco/DualSignals.jl/blob/main/LICENSE](https://github.com/equicirco/DualSignals.jl/blob/main/LICENSE)
 - Author: Riccardo Boero
-- Citation (DOI): https://doi.org/10.5281/zenodo.18071806
+- Citation (DOI): [https://doi.org/10.5281/zenodo.18071806](https://doi.org/10.5281/zenodo.18071806)
 
 ```bibtex
 @software{Boero_DualSignals_jl,
