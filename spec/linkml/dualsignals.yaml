@@ -84,6 +84,9 @@ classes:
         multivalued: true
         required: true
         minimum_cardinality: 1
+      tags:
+        range: string
+        multivalued: true
 
   ConstraintSolution:
     attributes:

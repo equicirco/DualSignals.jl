@@ -19,12 +19,45 @@ Writes a dataset to a JSON file. Use `pretty=true` for human-readable output.
 ### `to_json_string(dataset; pretty=false)`
 Returns a JSON string for a dataset (useful for tests or API responses).
 
-### `validate_dataset(dataset)`
+### `write_csv(dataset, dir; prefix="dualsignals")`
+Writes a dataset into a directory as multiple CSV files:
+
+- `dualsignals_metadata.csv`
+- `dualsignals_components.csv`
+- `dualsignals_constraints.csv`
+- `dualsignals_constraint_solutions.csv`
+- `dualsignals_variables.csv` (if present)
+
+### `read_csv(dir; prefix="dualsignals")`
+Reads the CSV directory produced by `write_csv` and reconstructs a dataset.
+Constraint and component tags are stored in the CSV as `tags` columns with
+semicolon-delimited lists.
+
+### Optional Arrow IO
+
+Arrow support is available if you install `Arrow.jl`:
+
+```julia
+import Pkg
+Pkg.add("Arrow")
+```
+
+Functions:
+
+### `write_arrow(dataset, dir; prefix="dualsignals")`
+Writes Arrow IPC files (`.arrow`) for metadata, components, constraints,
+constraint solutions, and variables.
+
+### `read_arrow(dir; prefix="dualsignals")`
+Reads the Arrow IPC files produced by `write_arrow`.
+
+### `validate_dataset(dataset; require_units=false)`
 Returns a vector of error strings for:
 - empty `dataset_id`
 - duplicate component or constraint IDs
 - constraints with no `component_ids`
 - references to missing component or constraint IDs
+- missing units (when `require_units=true`)
 
 ### `isvalid_dataset(dataset)`
 Convenience wrapper that returns `true` if `validate_dataset` returns no errors.

@@ -82,6 +82,7 @@ Base.@kwdef struct Constraint
     rhs::Union{Float64,Nothing} = nothing
     unit::Union{String,Nothing} = nothing
     component_ids::Vector{String}
+    tags::Union{Vector{String},Nothing} = nothing
 end
 
 Base.@kwdef struct ConstraintSolution

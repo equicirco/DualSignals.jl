@@ -68,6 +68,7 @@ Fields:
 - `rhs` (optional): right-hand-side / bound value (numeric)
 - `unit` (optional): unit of the constraint (e.g., MW, tCO2)
 - `component_ids` (required): list of component IDs referenced by the constraint
+- `tags` (optional): list of strings for grouping/filtering
 
 Notes:
 - `component_ids` can have 1 entry (e.g., a node balance) or multiple entries (e.g., a constraint involving a set of components).

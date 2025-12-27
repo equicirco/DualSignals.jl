@@ -65,16 +65,25 @@
             "additionalProperties": false,
             "description": "",
             "properties": {
-                "component_ids": {
-                    "items": {
-                        "type": "string"
-                    },
-                    "minItems": 1,
-                    "type": "array"
-                },
-                "constraint_id": {
-                    "type": "string"
-                },
+    "component_ids": {
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "tags": {
+      "items": {
+        "type": "string"
+      },
+      "type": [
+        "array",
+        "null"
+      ]
+    },
+    "constraint_id": {
+      "type": "string"
+    },
                 "kind": {
                     "$ref": "#/$defs/ConstraintKind"
                 },
@@ -367,4 +376,3 @@
     "type": "object",
     "version": null
 }
-
