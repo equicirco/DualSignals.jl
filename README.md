@@ -16,7 +16,15 @@ Documentation is available here: https://equicirco.github.io/DualSignals.jl
 ## Citation
 If you use DualSignals.jl, please cite it as:
 
-> **(citation placeholder)**
+```bibtex
+@software{Boero_DualSignals_jl,
+  author = {Boero, Riccardo},
+  title = {DualSignals.jl - Julia package for standardized extraction and decision-support reporting of shadow prices (duals) and constraint tightness from network and equilibrium models},
+  doi = {10.5281/zenodo.18071806},
+  url = {https://equicirco.github.io/DualSignals.jl/},
+  year = {2025}
+}
+```
 
 A [`CITATION.cff`](CITATION.cff) file is provided in this repository.
 

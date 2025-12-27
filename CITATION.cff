@@ -3,7 +3,7 @@ title: DualSignals.jl - Julia package for standardized extraction and decision-s
 message: >-
   v0.1.0 - Full initial implementation and test.
 type: software
-doi: --to be obtained--
+doi: 10.5281/zenodo.18071806
 authors:
   - given-names: Riccardo
     family-names: Boero
@@ -12,7 +12,7 @@ authors:
     affiliation: NILU
 identifiers:
   - type: doi
-    value: --to be obtained--
+    value: 10.5281/zenodo.18071806
     description: This DOI represents all software versions.
 repository-code: 'https://github.com/equicirco/DualSignals.jl'
 url: 'https://equicirco.github.io/DualSignals.jl/'
