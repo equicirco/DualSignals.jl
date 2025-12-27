@@ -13,5 +13,7 @@ Security: For vulnerabilities.
 ### Added
 - Repo structure
 - Data model and basic io code and validation
-- 
-
+- Constraint tagging in the data model plus CSV/Arrow support
+- JuMP adapter hooks for constraint tags
+- Example analyses with tables and plots in docs
+- Docs navigation refresh and expanded landing page
