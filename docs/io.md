@@ -1,5 +1,5 @@
 ---
-title: DualSignals Data IO
+title: Data IO
 nav_order: 3
 ---
 
