@@ -3,7 +3,7 @@ title: Data IO
 nav_order: 3
 ---
 
-# DualSignals data IO
+# Data IO
 
 The Julia package includes lightweight IO utilities for reading and writing
 DualSignals datasets as JSON, plus a simple validator for consistency checks.
