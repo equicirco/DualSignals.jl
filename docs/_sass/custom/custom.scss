@@ -5,11 +5,15 @@
 }
 
 .site-header {
-	justify-content: flex-start;
+	display: flex;
+	justify-content: flex-start !important;
+	text-align: left;
 }
 
 .site-header .site-title {
-	margin-right: auto;
+	margin-left: 0 !important;
+	margin-right: auto !important;
+	order: -1;
 }
 
 .site-title .site-logo {
