@@ -77,6 +77,22 @@ function _binding_duration_map(dataset::DualSignalsDataset; tol::Float64=1e-6)
 end
 
 
+"""
+Rank constraints by dual-based metrics and return the top rows.
+
+Keywords:
+- `metric`: `:abs_dual`, `:dual`, `:dual_times_slack`, `:dual_times_binding_duration`,
+  or `:dual_times_slack_change`.
+- `top`: number of rows to return.
+- `kind`: filter by `ConstraintKind`.
+- `scenario`: filter by scenario value.
+- `time`: filter by time value.
+- `tol`: tolerance for binding status.
+- `binding_only`: if true, return only binding constraints.
+- `slack_change`: value for `:dual_times_slack_change` metric.
+
+Returns a vector of named tuples with ranking details.
+"""
 function rank_constraints(
     dataset::DualSignalsDataset;
     metric::Symbol=:abs_dual,

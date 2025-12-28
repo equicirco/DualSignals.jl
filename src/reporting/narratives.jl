@@ -1,3 +1,10 @@
+"""
+Generate a short narrative summary of top bottlenecks.
+
+Keywords:
+- `top`: number of bottlenecks to include.
+- `tol`: tolerance for binding status.
+"""
 function narrative_top_bottlenecks(
     dataset::DualSignalsDataset;
     top::Int=5,
@@ -17,6 +24,16 @@ function narrative_top_bottlenecks(
     return "Top bottlenecks by absolute dual: " * join(parts, "; ")
 end
 
+"""
+Generate a narrative policy summary with optional extras.
+
+Keywords:
+- `top`: number of rows per summary section.
+- `tol`: tolerance for binding status.
+- `slack_change`: delta slack for relaxation-value metric.
+- `include_duration`: include time-weighted bottlenecks (`:auto` or Bool).
+- `include_slack_change`: include relaxation value (`:auto` or Bool).
+"""
 function narrative_policy_summary(
     dataset::DualSignalsDataset;
     top::Int=3,

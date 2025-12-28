@@ -12,6 +12,7 @@ makedocs(
     pages = [
         "Home" => "index.md",
         "Data Model" => "data-model.md",
+        "API" => "api.md",
         "Data IO" => "io.md",
         "Analysis" => "analysis.md",
         "Reporting" => "reporting.md",

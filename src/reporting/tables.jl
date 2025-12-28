@@ -1,3 +1,13 @@
+"""
+Return a ranked table of top constraints by the chosen metric.
+
+Keywords:
+- `metric`: `:abs_dual`, `:dual`, `:dual_times_slack`, `:dual_times_binding_duration`,
+  or `:dual_times_slack_change`.
+- `top`: number of rows to return.
+- `tol`: tolerance for binding status.
+- `binding_only`: if true, return only binding constraints.
+"""
 function table_top_constraints(
     dataset::DualSignalsDataset;
     metric::Symbol=:abs_dual,
@@ -19,6 +29,17 @@ function _annotate_rows(dataset::DualSignalsDataset, rows)
     return [(; row..., impact=_impact_label(dataset.metadata.objective_sense, row.sense, row.dual)) for row in rows]
 end
 
+"""
+Return a bundle of tables for bottlenecks and capacity priorities.
+
+Keywords:
+- `top`: number of rows per table.
+- `tol`: tolerance for binding status.
+- `with_impact`: include human-readable impact labels.
+- `slack_change`: delta slack for relaxation-value metric.
+- `include_duration`: include time-weighted bottlenecks (`:auto` or Bool).
+- `include_slack_change`: include relaxation value (`:auto` or Bool).
+"""
 function table_policy_priorities(
     dataset::DualSignalsDataset;
     top::Int=5,

@@ -2,12 +2,32 @@ using CSV
 using Dates
 using JSON3
 
+"""
+Read a `DualSignalsDataset` from a JSON file.
+
+Args:
+- `path`: path to a JSON file matching the data model.
+
+Returns a `DualSignalsDataset`.
+"""
 function read_json(path::AbstractString)
     open(path, "r") do io
         return JSON3.read(io, DualSignalsDataset)
     end
 end
 
+"""
+Write a `DualSignalsDataset` to a JSON file.
+
+Args:
+- `path`: output file path.
+- `dataset`: dataset to write.
+
+Keywords:
+- `pretty`: pretty-print JSON with indentation.
+
+Returns the written `path`.
+"""
 function write_json(path::AbstractString, dataset::DualSignalsDataset; pretty::Bool=false)
     open(path, "w") do io
         if pretty
@@ -19,6 +39,14 @@ function write_json(path::AbstractString, dataset::DualSignalsDataset; pretty::B
     return path
 end
 
+"""
+Serialize a `DualSignalsDataset` to a JSON string.
+
+Keywords:
+- `pretty`: pretty-print JSON with indentation.
+
+Returns a `String`.
+"""
 function to_json_string(dataset::DualSignalsDataset; pretty::Bool=false)
     if pretty
         return JSON3.write(dataset; indent=2)
@@ -26,6 +54,14 @@ function to_json_string(dataset::DualSignalsDataset; pretty::Bool=false)
     return JSON3.write(dataset)
 end
 
+"""
+Return a list of validation error strings for a dataset.
+
+Keywords:
+- `require_units`: if true, require units on constraints, variables, and metadata.
+
+Returns `String[]` (empty means valid).
+"""
 function validate_dataset(dataset::DualSignalsDataset; require_units::Bool=false)
     errors = String[]
 
@@ -99,8 +135,21 @@ function validate_dataset(dataset::DualSignalsDataset; require_units::Bool=false
     return errors
 end
 
+"""
+Return `true` if the dataset has no validation errors.
+"""
 isvalid_dataset(dataset::DualSignalsDataset) = isempty(validate_dataset(dataset))
 
+"""
+Write dataset tables to CSV files in a directory.
+
+Args:
+- `dataset`: dataset to export.
+- `dir`: output directory.
+
+Keywords:
+- `prefix`: filename prefix for the tables.
+"""
 function write_csv(dataset::DualSignalsDataset, dir::AbstractString; prefix::AbstractString="dualsignals")
     mkpath(dir)
 
@@ -200,6 +249,15 @@ function _split_list(x)
     return isempty(s) ? String[] : split(s, ";")
 end
 
+"""
+Read a dataset from CSV tables written by `write_csv`.
+
+Args:
+- `dir`: directory containing the CSV tables.
+
+Keywords:
+- `prefix`: filename prefix for the tables.
+"""
 function read_csv(dir::AbstractString; prefix::AbstractString="dualsignals")
     meta_path = joinpath(dir, "$(prefix)_metadata.csv")
     comp_path = joinpath(dir, "$(prefix)_components.csv")
@@ -302,6 +360,16 @@ function _require_arrow()
     @eval import Arrow
 end
 
+"""
+Write dataset tables to Arrow files in a directory.
+
+Args:
+- `dataset`: dataset to export.
+- `dir`: output directory.
+
+Keywords:
+- `prefix`: filename prefix for the tables.
+"""
 function write_arrow(dataset::DualSignalsDataset, dir::AbstractString; prefix::AbstractString="dualsignals")
     _require_arrow()
     mkpath(dir)
@@ -372,6 +440,15 @@ function write_arrow(dataset::DualSignalsDataset, dir::AbstractString; prefix::A
     return dir
 end
 
+"""
+Read a dataset from Arrow files written by `write_arrow`.
+
+Args:
+- `dir`: directory containing the Arrow tables.
+
+Keywords:
+- `prefix`: filename prefix for the tables.
+"""
 function read_arrow(dir::AbstractString; prefix::AbstractString="dualsignals")
     _require_arrow()
     meta_path = joinpath(dir, "$(prefix)_metadata.arrow")

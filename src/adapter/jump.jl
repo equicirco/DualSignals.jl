@@ -81,6 +81,19 @@ function _activity_value(func)
     end
 end
 
+"""
+Extract a `DualSignalsDataset` from a JuMP model and its solution.
+
+Keywords:
+- `dataset_id`: dataset identifier for the exported results.
+- `include_variables`: include variable values.
+- `include_constraints`: include constraint metadata.
+- `include_constraint_solutions`: include constraint solutions and duals.
+- `units_convention`: units description for metadata.
+- `description`: optional dataset description.
+- `kind_hint`: function mapping constraint label -> `ConstraintKind`.
+- `tag_hint`: function mapping (label, kind) -> tags vector or `nothing`.
+"""
 function jump_dataset(
     model::JuMP.Model;
     dataset_id::AbstractString="jump_model",

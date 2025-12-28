@@ -25,6 +25,16 @@ function _infer_binding(constraint::Constraint, solution::ConstraintSolution, to
 end
 
 
+"""
+Return per-constraint rows with slack, binding flag, and impact labels.
+
+Keywords:
+- `tol`: tolerance for binding status when slack is inferred.
+
+Returns a vector of named tuples with:
+`constraint_id`, `kind`, `sense`, `rhs`, `activity`, `slack`, `dual`,
+`is_binding`, `impact`, `time`, `scenario`.
+"""
 function bindingness(dataset::DualSignalsDataset; tol::Float64=1e-6)
     constraints = Dict(c.constraint_id => c for c in dataset.constraints)
     rows = Vector{NamedTuple}()

@@ -1,5 +1,15 @@
 using Statistics
 
+"""
+Aggregate dual values by constraint kind, id, or component id.
+
+Keywords:
+- `by`: `:kind`, `:constraint_id`, or `:component_id`.
+- `scenario`: optional scenario filter.
+- `time`: optional time filter.
+
+Returns a vector of named tuples with `key`, `count`, `mean`, `mean_abs`, and `max_abs`.
+"""
 function aggregate_duals(
     dataset::DualSignalsDataset;
     by::Symbol=:kind,
@@ -48,6 +58,16 @@ function aggregate_duals(
     return rows
 end
 
+"""
+Aggregate dual values over time or scenario for each key.
+
+Keywords:
+- `by`: `:constraint_id`, `:kind`, or `:component_id`.
+- `over`: `:time` or `:scenario`.
+- `scenario`: optional scenario filter.
+
+Returns a vector of named tuples with `key`, `over`, `count`, `mean`, `mean_abs`, and `max_abs`.
+"""
 function aggregate_duals_series(
     dataset::DualSignalsDataset;
     by::Symbol=:constraint_id,
