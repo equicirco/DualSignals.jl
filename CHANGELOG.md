@@ -9,9 +9,14 @@ Removed: For features removed in this release.
 Fixed: For any bug fixes.
 Security: For vulnerabilities.
 
+## [0.1.2] - unreleased
+### Added
+- CI/CD for Julia Registry deployment of updates
+
 ## [0.1.1] - 2025-12-28
 ### Added
 - Registration in Julia General Registry
+- Installation instructions
 
 ## [0.1.0] - 2025-12-27
 ### Added
