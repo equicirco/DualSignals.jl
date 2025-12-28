@@ -24,6 +24,13 @@ Julia package for standardized extraction and decision-support reporting of shad
 }
 ```
 
+## Installation
+DualSignals.jl is available as a package from the Julia General Registry:
+```julia
+using Pkg
+Pkg.add("DualSignals")
+```
+
 ## What this package does
 
 DualSignals.jl helps you turn solved optimization and equilibrium models into
