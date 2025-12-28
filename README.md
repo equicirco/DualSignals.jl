@@ -13,6 +13,13 @@ DualSignals.jl standardizes extraction and decision-support reporting of dual va
 ## Documentation
 Documentation is available here: https://equicirco.github.io/DualSignals.jl
 
+## Installation
+DualSignals.jl is available as a package from the Julia General Registry:
+```julia
+using Pkg
+Pkg.add("DualSignals")
+```
+
 ## Citation
 If you use DualSignals.jl, please cite it as:
 
@@ -33,4 +40,5 @@ MIT License. See [`LICENSE`](LICENSE).
 
 ## Author
 Riccardo Boero (NILU)
+
 
