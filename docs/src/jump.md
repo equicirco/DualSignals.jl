@@ -1,8 +1,3 @@
----
-title: JuMP Adapter
-nav_order: 6
----
-
 # JuMP adapter
 
 The JuMP adapter converts a solved JuMP model into the DualSignals data model.

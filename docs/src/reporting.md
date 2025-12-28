@@ -1,8 +1,3 @@
----
-title: Reporting
-nav_order: 5
----
-
 # Reporting utilities
 
 Reporting helpers wrap analysis output into policy-friendly tables and short

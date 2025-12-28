@@ -1,8 +1,3 @@
----
-title: "Example: CGE"
-nav_order: 9
----
-
 # Standard CGE Model
 
 This example is based on the "A Standard CGE Model in Ch. 6 (STDCGE, SEQ=276)"

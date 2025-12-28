@@ -1,8 +1,3 @@
----
-title: "Example: OPF"
-nav_order: 8
----
-
 # IEEE 14-bus OPF example
 
 This example uses the classic IEEE 14-bus optimal power flow (OPF) test case.

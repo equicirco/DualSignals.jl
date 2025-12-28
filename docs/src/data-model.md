@@ -1,8 +1,3 @@
----
-title: Data Model
-nav_order: 2
----
-
 # DualSignals data model (LinkML)
 
 This repository defines a small, model-agnostic data model for exporting and exchanging **dual-based signals** from solved models (network optimization, IO-LP, equilibrium/CGE-as-optimization, etc.). The same model is maintained in:

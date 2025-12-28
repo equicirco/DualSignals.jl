@@ -1,8 +1,3 @@
----
-title: Analysis
-nav_order: 4
----
-
 # Analysis utilities
 
 The analysis layer turns raw duals, activity, and slack into ranked insights.

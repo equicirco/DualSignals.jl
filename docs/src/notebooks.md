@@ -1,8 +1,3 @@
----
-title: Notebooks
-nav_order: 7
----
-
 # Pluto notebooks
 
 The `notebooks/` folder contains simple Pluto.jl notebooks with a shared
