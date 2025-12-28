@@ -93,7 +93,7 @@ Fields:
 - `created_at`: optional timestamp for when the dataset was generated.
 - `objective_sense`: `minimize` or `maximize` if known.
 - `objective_value`: objective value at the solution if known.
-- `units_convention`: optional units description (e.g., "MW, $/MWh").
+- `units_convention`: optional units description (e.g., "MW, \\$/MWh").
 - `notes`: free-form notes for provenance and assumptions.
 """
 Base.@kwdef struct DatasetMetadata
