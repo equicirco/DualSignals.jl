@@ -33,12 +33,11 @@ If you use DualSignals.jl, please cite it as:
 }
 ```
 
-A [`CITATION.cff`](CITATION.cff) file is provided in this repository.
-
 ## License
 MIT License. See [`LICENSE`](LICENSE).
 
 ## Author
-Riccardo Boero (NILU)
+Riccardo Boero (ribo@nilu.no)
+
 
 
