@@ -8,6 +8,10 @@ makedocs(
     sitename = "DualSignals.jl",
     format = Documenter.HTML(
         prettyurls = get(ENV, "CI", "false") == "true",
+        assets = [
+            "assets/deepwiki-chat.css",
+            "assets/deepwiki-chat.js",
+        ],
     ),
     pages = [
         "Home" => "index.md",
