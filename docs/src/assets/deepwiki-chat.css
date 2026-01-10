@@ -89,6 +89,10 @@ html.dark {
   max-width: none;
 }
 
+.dw-chat.dw-embedded {
+  margin-top: 0.75rem;
+}
+
 .dw-chat.dw-embedded .dw-toggle,
 .dw-chat.dw-inline .dw-toggle,
 .dw-chat.dw-embedded .dw-close,

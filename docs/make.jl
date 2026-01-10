@@ -32,4 +32,9 @@ makedocs(
 deploydocs(
     repo = "github.com/equicirco/DualSignals.jl.git",
     devbranch = "main",
+    versions = [
+        "stable" => "v^",
+        "v#.#",
+        "dev" => "dev",
+    ],
 )

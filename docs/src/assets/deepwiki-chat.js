@@ -32,6 +32,32 @@
   `;
 
   const mountChat = () => {
+    const insertAfter = (target, node) => {
+      if (!target || !target.parentNode) {
+        return false;
+      }
+      target.parentNode.insertBefore(node, target.nextSibling);
+      return true;
+    };
+
+    const searchInput =
+      document.querySelector(".documenter-search input") ||
+      document.querySelector("#documenter-search input") ||
+      document.querySelector("input[type=\"search\"]") ||
+      document.querySelector("input[placeholder*=\"Search\"]");
+
+    if (searchInput) {
+      const searchContainer =
+        searchInput.closest(".documenter-search") ||
+        searchInput.closest("form") ||
+        searchInput.parentElement;
+
+      if (insertAfter(searchContainer, root)) {
+        root.classList.add("dw-embedded");
+        return;
+      }
+    }
+
     const wideScreen = window.matchMedia("(min-width: 1100px)").matches;
     const toc =
       document.querySelector(".documenter-toc") ||
