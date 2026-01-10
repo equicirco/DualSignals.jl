@@ -41,6 +41,8 @@
     };
 
     const searchInput =
+      document.querySelector("#documenter-search-query") ||
+      document.querySelector(".docs-search-query") ||
       document.querySelector(".documenter-search input") ||
       document.querySelector("#documenter-search input") ||
       document.querySelector("input[type=\"search\"]") ||
@@ -50,7 +52,7 @@
       const searchContainer =
         searchInput.closest(".documenter-search") ||
         searchInput.closest("form") ||
-        searchInput.parentElement;
+        searchInput;
 
       if (insertAfter(searchContainer, root)) {
         root.classList.add("dw-embedded");
@@ -86,7 +88,18 @@
     document.body.appendChild(root);
   };
 
-  mountChat();
+  const mountWhenReady = () => {
+    mountChat();
+    if (root.classList.contains("dw-embedded") || root.classList.contains("dw-inline")) {
+      root.classList.add("dw-open");
+    }
+  };
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", mountWhenReady);
+  } else {
+    mountWhenReady();
+  }
 
   const toggleBtn = root.querySelector(".dw-toggle");
   const closeBtn = root.querySelector(".dw-close");
@@ -150,9 +163,6 @@
   toggleBtn.addEventListener("click", openPanel);
   closeBtn.addEventListener("click", closePanel);
 
-  if (root.classList.contains("dw-embedded") || root.classList.contains("dw-inline")) {
-    root.classList.add("dw-open");
-  }
 
   class DeepWikiMcpClient {
     constructor(onStatus) {
