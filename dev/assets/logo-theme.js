@@ -17,10 +17,29 @@
   };
 
   const applyLogo = () => {
-    const logoImg = document.querySelector(".docs-sidebar .docs-logo img");
-    if (!logoImg) {
+    const sidebar = document.querySelector(".docs-sidebar");
+    if (!sidebar) {
       return false;
     }
+
+    let logoLink = sidebar.querySelector(".docs-logo");
+    let logoImg = logoLink ? logoLink.querySelector("img") : null;
+
+    if (!logoImg) {
+      logoLink = document.createElement("a");
+      logoLink.className = "docs-logo";
+      logoLink.href = base;
+      logoImg = document.createElement("img");
+      logoImg.alt = "DualSignals.jl logo";
+      logoLink.appendChild(logoImg);
+      const packageName = sidebar.querySelector(".docs-package-name");
+      if (packageName) {
+        sidebar.insertBefore(logoLink, packageName);
+      } else {
+        sidebar.prepend(logoLink);
+      }
+    }
+
     logoImg.src = isDarkTheme() ? darkSrc : lightSrc;
     return true;
   };
