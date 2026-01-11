@@ -40,6 +40,12 @@
       return true;
     };
 
+    const docsMenu = document.querySelector(".docs-sidebar .docs-menu");
+    if (docsMenu && insertAfter(docsMenu, root)) {
+      root.classList.add("dw-embedded");
+      return;
+    }
+
     const searchInput =
       document.querySelector("#documenter-search-query") ||
       document.querySelector(".docs-search-query") ||
