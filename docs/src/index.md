@@ -1,5 +1,7 @@
 ```@raw html
 <img src="assets/logo.png" alt="DualSignals.jl logo" width="120" style="vertical-align: middle;">
+<img src="assets/logo-light.png" alt="DualSignals.jl logo (light)" width="120" style="vertical-align: middle;">
+<img src="assets/logo-dark.png" alt="DualSignals.jl logo (dark)" width="120" style="vertical-align: middle;">
 ```
 
 # DualSignals.jl
