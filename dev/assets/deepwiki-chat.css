@@ -11,7 +11,10 @@
 }
 
 html[data-theme="dark"],
-html.theme--dark,
+html.theme--documenter-dark,
+html.theme--catppuccin-mocha,
+html.theme--catppuccin-macchiato,
+html.theme--catppuccin-frappe,
 html.dark {
   --dw-chat-bg: #121821;
   --dw-chat-border: #2a3340;
@@ -91,6 +94,29 @@ html.dark {
 
 .dw-chat.dw-embedded {
   margin-top: 0.75rem;
+}
+
+.docs-sidebar .dw-panel {
+  border-radius: 8px;
+  box-shadow: none;
+}
+
+.docs-sidebar .dw-header {
+  padding: 0.6rem 0.75rem;
+  background: transparent;
+}
+
+.docs-sidebar .dw-messages {
+  padding: 0.6rem 0.7rem;
+}
+
+.docs-sidebar .dw-input {
+  padding: 0.6rem 0.7rem 0.7rem;
+}
+
+.docs-sidebar .dw-send {
+  font-size: 0.8rem;
+  padding: 0.4rem 0.8rem;
 }
 
 .dw-chat.dw-embedded .dw-toggle,
