@@ -11,9 +11,8 @@ makedocs(
         assets = [
             "assets/deepwiki-chat.css",
             "assets/deepwiki-chat.js",
+            "assets/logo-theme.js",
         ],
-        logo = "assets/logo-light.png",
-        logo_dark = "assets/logo-dark.png",
     ),
     pages = [
         "Home" => "index.md",
