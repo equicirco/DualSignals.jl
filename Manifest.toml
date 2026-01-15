@@ -99,7 +99,7 @@ version = "0.9.5"
 deps = ["CSV", "Dates", "JSON3", "JuMP", "MathOptInterface", "Statistics", "StructTypes"]
 path = "."
 uuid = "e4247b8d-50b5-41ef-b53d-f6e21a6bdac0"
-version = "0.1.1"
+version = "0.1.2"
 
 [[deps.FilePathsBase]]
 deps = ["Compat", "Dates"]

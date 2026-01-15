@@ -23,7 +23,7 @@ High-level category for constraints.
 - `policy_cap`: policy-driven caps (emissions, quotas).
 - `technology`: technology-driven bounds.
 """
-@enum ConstraintKind balance capacity resource policy_cap technology other
+@enum ConstraintKind balance capacity resource policy_cap technology other_constraint
 
 """
 Constraint sense (<=, =, >=).
@@ -60,6 +60,23 @@ function _enum_from_string(::Type{T}, x) where {T}
     error("Invalid $(T) value: $(repr(x))")
 end
 
+function _enum_from_string(::Type{ConstraintKind}, x)
+    if x isa Symbol
+        x = String(x)
+    end
+    if x isa AbstractString
+        if x == "other"
+            return other_constraint
+        end
+        for val in Base.Enums.instances(ConstraintKind)
+            if x == string(val)
+                return val
+            end
+        end
+    end
+    error("Invalid $(ConstraintKind) value: $(repr(x))")
+end
+
 StructTypes.construct(::Type{ObjectiveSense}, x::AbstractString) =
     _enum_from_string(ObjectiveSense, x)
 StructTypes.construct(::Type{ObjectiveSense}, x::Symbol) =
@@ -82,7 +99,7 @@ StructTypes.construct(::Type{ConstraintSense}, x::Symbol) =
 
 StructTypes.lower(x::ObjectiveSense) = string(x)
 StructTypes.lower(x::ComponentType) = string(x)
-StructTypes.lower(x::ConstraintKind) = string(x)
+StructTypes.lower(x::ConstraintKind) = x == other_constraint ? "other" : string(x)
 StructTypes.lower(x::ConstraintSense) = string(x)
 
 """

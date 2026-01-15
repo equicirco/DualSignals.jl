@@ -34,8 +34,8 @@ DualSignals schema:
 - `vm` -> bus voltage magnitude limits (`ConstraintKind.capacity`, `ConstraintSense.le`)
 - `pg`, `qg` -> generator limits (`ConstraintKind.capacity`, `ConstraintSense.le`)
 - `pf`, `pt`, `qf`, `qt`, `sm_fr`, `sm_to` -> line flow/thermal limits (`ConstraintKind.capacity`, `ConstraintSense.le`)
-- `va_diff`, `ohm_pf`, `ohm_pt`, `ohm_qf`, `ohm_qt` -> physics constraints (`ConstraintKind.other`, `ConstraintSense.eq`)
-- `slack_bus` -> slack constraint for bus 1 (`ConstraintKind.other`, `ConstraintSense.eq`)
+- `va_diff`, `ohm_pf`, `ohm_pt`, `ohm_qf`, `ohm_qt` -> physics constraints (`ConstraintKind.other_constraint`, `ConstraintSense.eq`)
+- `slack_bus` -> slack constraint for bus 1 (`ConstraintKind.other_constraint`, `ConstraintSense.eq`)
 
 Components were created for each bus, generator, and line using the counts in
 the HDF5 arrays (14 buses, 5 generators, 20 lines). This yields a dual-only

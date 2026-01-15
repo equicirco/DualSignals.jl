@@ -12,6 +12,8 @@ Security: For vulnerabilities.
 ## [0.1.2] - 2026-01-15
 ### Changed
 - Expanded Julia compat to 1.10
+### Fixed
+- Resolved enum name collision by renaming `ConstraintKind.other` to `ConstraintKind.other_constraint` (still serialized as `other`)
 ### Added
 - CI/CD for Julia Registry deployment of updates
 
