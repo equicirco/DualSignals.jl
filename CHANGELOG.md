@@ -9,7 +9,9 @@ Removed: For features removed in this release.
 Fixed: For any bug fixes.
 Security: For vulnerabilities.
 
-## [0.1.2] - unreleased
+## [0.1.2] - 2026-01-15
+### Changed
+- Expanded Julia compat to 1.10
 ### Added
 - CI/CD for Julia Registry deployment of updates
 

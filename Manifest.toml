@@ -2,7 +2,7 @@
 
 julia_version = "1.12.3"
 manifest_format = "2.0"
-project_hash = "3a6ae4ae1e272c20bc39d0e96d5baa758289f32e"
+project_hash = "59337e9eb9459067ddc73321ea7ad62c53ec40ae"
 
 [[deps.Artifacts]]
 uuid = "56f22d72-fd6d-98f1-02f0-08ddc0907c33"
@@ -99,7 +99,7 @@ version = "0.9.5"
 deps = ["CSV", "Dates", "JSON3", "JuMP", "MathOptInterface", "Statistics", "StructTypes"]
 path = "."
 uuid = "e4247b8d-50b5-41ef-b53d-f6e21a6bdac0"
-version = "0.1.0"
+version = "0.1.1"
 
 [[deps.FilePathsBase]]
 deps = ["Compat", "Dates"]
